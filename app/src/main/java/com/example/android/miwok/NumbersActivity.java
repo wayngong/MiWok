@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -20,13 +21,24 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
 
-        ArrayList<String> words = new ArrayList<String>();
+//        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<Word> words = new ArrayList<Word>();
 
-        for (int i=0;i<100;i++){
-            words.add(""+i);
-        }
+//        for (int i=0;i<100;i++){
+//            words.add(""+i);
+//        }
+        words.add(new Word("one","MiwokOne"));
+        words.add(new Word("two","MiwokTwo"));
+        words.add(new Word("Three","MiwokThree"));
+        words.add(new Word("Four","MiwokFour"));
+        words.add(new Word("Five","MiwokFive"));
+        words.add(new Word("Six","MiwokSix"));
+        words.add(new Word("Seven","MiwokSeven"));
+        words.add(new Word("Eight","MiwokEight"));
+        words.add(new Word("Nine","MiwokNine"));
+        words.add(new Word("Ten","MiwokTen"));
 
-        ArrayAdapter itemAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, words);
+        WordAdapter itemAdapter = new WordAdapter(this, words);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(itemAdapter);
 
