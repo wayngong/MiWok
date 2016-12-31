@@ -5,17 +5,23 @@ package com.example.android.miwok;
  */
 
 public class Word {
+    // Image for miwok item
+    private int srcImage;
+
     // English name for miwok
     private String mEnglishWord;
 
     // Miwok name for miwok
     private String mMiwokWord;
 
+    public int getSrcImage(){return srcImage;}
+
     public String getEnglish(){return mEnglishWord;}
 
     public String getMiwok(){return mMiwokWord;}
 
-    public Word( String english, String miwok){
+    public Word(int src, String english, String miwok){
+        srcImage = src;
         mEnglishWord = english;
         mMiwokWord = miwok;
     }

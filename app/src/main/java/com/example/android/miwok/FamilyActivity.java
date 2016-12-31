@@ -15,16 +15,18 @@ public class FamilyActivity extends AppCompatActivity {
 
         ArrayList<Word> words = new ArrayList<Word>();
 
-        words.add(new Word("father","əpə"));
-        words.add(new Word("mother","əṭa"));
-        words.add(new Word("son","angsi"));
-        words.add(new Word("daughter","tune"));
-        words.add(new Word("older brother","taachi"));
-        words.add(new Word("younger brother","chalitti"));
-        words.add(new Word("older sister","teṭe"));
-        words.add(new Word("younger sister","kolliti"));
-        words.add(new Word("grandmother","ama"));
-        words.add(new Word("grandfather","paapa"));
+        int srcImage = R.mipmap.ic_launcher;
+
+        words.add(new Word(srcImage, "father","əpə"));
+        words.add(new Word(srcImage, "mother","əṭa"));
+        words.add(new Word(srcImage, "son","angsi"));
+        words.add(new Word(srcImage, "daughter","tune"));
+        words.add(new Word(srcImage, "older brother","taachi"));
+        words.add(new Word(srcImage, "younger brother","chalitti"));
+        words.add(new Word(srcImage, "older sister","teṭe"));
+        words.add(new Word(srcImage, "younger sister","kolliti"));
+        words.add(new Word(srcImage, "grandmother","ama"));
+        words.add(new Word(srcImage, "grandfather","paapa"));
 
         WordAdapter itemadapter = new WordAdapter(this, words);
         ListView listView = (ListView)findViewById(R.id.list);

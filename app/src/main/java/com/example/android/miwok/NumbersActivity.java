@@ -16,16 +16,18 @@ public class NumbersActivity extends AppCompatActivity {
 
         ArrayList<Word> words = new ArrayList<Word>();
 
-        words.add(new Word("one","lutti"));
-        words.add(new Word("two","otiiko"));
-        words.add(new Word("Three","tolookosu"));
-        words.add(new Word("Four","oyyisa"));
-        words.add(new Word("Five","massokka"));
-        words.add(new Word("Six","temmokka"));
-        words.add(new Word("Seven","kenekaku"));
-        words.add(new Word("Eight","kawinta"));
-        words.add(new Word("Nine","wo’e"));
-        words.add(new Word("Ten","na’aacha"));
+        int srcImage = R.mipmap.ic_launcher;
+
+        words.add(new Word(srcImage, "one","lutti"));
+        words.add(new Word(srcImage, "two","otiiko"));
+        words.add(new Word(srcImage, "Three","tolookosu"));
+        words.add(new Word(srcImage, "Four","oyyisa"));
+        words.add(new Word(srcImage, "Five","massokka"));
+        words.add(new Word(srcImage, "Six","temmokka"));
+        words.add(new Word(srcImage, "Seven","kenekaku"));
+        words.add(new Word(srcImage, "Eight","kawinta"));
+        words.add(new Word(srcImage, "Nine","wo’e"));
+        words.add(new Word(srcImage, "Ten","na’aacha"));
 
         WordAdapter itemAdapter = new WordAdapter(this, words);
         ListView listView = (ListView)findViewById(R.id.list);

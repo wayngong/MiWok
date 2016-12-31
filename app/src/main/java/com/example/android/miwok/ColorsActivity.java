@@ -15,14 +15,16 @@ public class ColorsActivity extends AppCompatActivity {
 
         ArrayList<Word> words = new ArrayList<Word>();
 
-        words.add(new Word("red","weṭeṭṭi"));
-        words.add(new Word("green","chokokki"));
-        words.add(new Word("brown","ṭakaakki"));
-        words.add(new Word("gray","ṭopoppi"));
-        words.add(new Word("black","kululli"));
-        words.add(new Word("white","kelelli"));
-        words.add(new Word("dusty yellow","ṭopiisə"));
-        words.add(new Word("mustard yellow","chiwiiṭə"));
+        int srcImage = R.mipmap.ic_launcher;
+
+        words.add(new Word(srcImage, "red","weṭeṭṭi"));
+        words.add(new Word(srcImage, "green","chokokki"));
+        words.add(new Word(srcImage, "brown","ṭakaakki"));
+        words.add(new Word(srcImage, "gray","ṭopoppi"));
+        words.add(new Word(srcImage, "black","kululli"));
+        words.add(new Word(srcImage, "white","kelelli"));
+        words.add(new Word(srcImage, "dusty yellow","ṭopiisə"));
+        words.add(new Word(srcImage, "mustard yellow","chiwiiṭə"));
 
         WordAdapter itemAdapter = new WordAdapter(this, words);
         ListView listView = (ListView)findViewById(R.id.list);
