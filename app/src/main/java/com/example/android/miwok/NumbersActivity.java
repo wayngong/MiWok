@@ -16,30 +16,20 @@ public class NumbersActivity extends AppCompatActivity {
 
         ArrayList<Word> words = new ArrayList<Word>();
 
-        int srcImage = R.mipmap.ic_launcher;
+        words.add(new Word(R.drawable.number_one, "one","lutti"));
+        words.add(new Word(R.drawable.number_two, "two","otiiko"));
+        words.add(new Word(R.drawable.number_three, "Three","tolookosu"));
+        words.add(new Word(R.drawable.number_four, "Four","oyyisa"));
+        words.add(new Word(R.drawable.number_five, "Five","massokka"));
+        words.add(new Word(R.drawable.number_six, "Six","temmokka"));
+        words.add(new Word(R.drawable.number_seven, "Seven","kenekaku"));
+        words.add(new Word(R.drawable.number_eight, "Eight","kawinta"));
+        words.add(new Word(R.drawable.number_nine, "Nine","wo’e"));
+        words.add(new Word(R.drawable.number_ten, "Ten","na’aacha"));
 
-        words.add(new Word(srcImage, "one","lutti"));
-        words.add(new Word(srcImage, "two","otiiko"));
-        words.add(new Word(srcImage, "Three","tolookosu"));
-        words.add(new Word(srcImage, "Four","oyyisa"));
-        words.add(new Word(srcImage, "Five","massokka"));
-        words.add(new Word(srcImage, "Six","temmokka"));
-        words.add(new Word(srcImage, "Seven","kenekaku"));
-        words.add(new Word(srcImage, "Eight","kawinta"));
-        words.add(new Word(srcImage, "Nine","wo’e"));
-        words.add(new Word(srcImage, "Ten","na’aacha"));
-
-        WordAdapter itemAdapter = new WordAdapter(this, words);
+        WordAdapter itemAdapter = new WordAdapter(this, words, R.color.category_numbers);
         ListView listView = (ListView)findViewById(R.id.list);
+        listView.setBackgroundResource(R.color.tan_background);
         listView.setAdapter(itemAdapter);
-
-//        final ListView listView = (ListView)findViewById(R.id.list);
-
-//        for(int indexTextList=0; indexTextList<words.size(); indexTextList++){
-//            TextView mTextView = new TextView(this);
-//            mTextView.setText(words.get(indexTextList));
-//            mTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2)); // width = match_parent, height = wrap_content
-//            listView.addView(mTextView);
-//        }
     }
 }

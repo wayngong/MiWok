@@ -17,21 +17,20 @@ public class FamilyActivity extends AppCompatActivity {
 
         int srcImage = R.mipmap.ic_launcher;
 
-        words.add(new Word(srcImage, "father","əpə"));
-        words.add(new Word(srcImage, "mother","əṭa"));
-        words.add(new Word(srcImage, "son","angsi"));
-        words.add(new Word(srcImage, "daughter","tune"));
-        words.add(new Word(srcImage, "older brother","taachi"));
-        words.add(new Word(srcImage, "younger brother","chalitti"));
-        words.add(new Word(srcImage, "older sister","teṭe"));
-        words.add(new Word(srcImage, "younger sister","kolliti"));
-        words.add(new Word(srcImage, "grandmother","ama"));
-        words.add(new Word(srcImage, "grandfather","paapa"));
+        words.add(new Word(R.drawable.family_father, "father","əpə"));
+        words.add(new Word(R.drawable.family_mother, "mother","əṭa"));
+        words.add(new Word(R.drawable.family_son, "son","angsi"));
+        words.add(new Word(R.drawable.family_daughter, "daughter","tune"));
+        words.add(new Word(R.drawable.family_older_brother, "older brother","taachi"));
+        words.add(new Word(R.drawable.family_younger_brother, "younger brother","chalitti"));
+        words.add(new Word(R.drawable.family_older_sister, "older sister","teṭe"));
+        words.add(new Word(R.drawable.family_younger_sister, "younger sister","kolliti"));
+        words.add(new Word(R.drawable.family_grandmother, "grandmother","ama"));
+        words.add(new Word(R.drawable.family_grandfather, "grandfather","paapa"));
 
-        WordAdapter itemadapter = new WordAdapter(this, words);
+        WordAdapter itemadapter = new WordAdapter(this, words, R.color.category_family);
         ListView listView = (ListView)findViewById(R.id.list);
+        listView.setBackgroundResource(R.color.tan_background);
         listView.setAdapter(itemadapter);
-
-
     }
 }
