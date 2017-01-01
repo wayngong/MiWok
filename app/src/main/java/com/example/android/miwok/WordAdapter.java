@@ -61,15 +61,15 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView miwokView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
         miwokView.setText(currentWord.getMiwok());
 
-        if (currentWord.hasSong()) {
-            final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongId());
-            listItemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mediaPlayer.start();
-                }
-            });
-        }
+//        if (currentWord.hasSong()) {
+//            final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongId());
+//            listItemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    mediaPlayer.start();
+//                }
+//            });
+//        }
 
         return listItemView;
     }
