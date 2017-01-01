@@ -16,6 +16,11 @@ public class Word {
     // Miwok name for miwok
     private String mMiwokWord;
 
+    // Song id
+    private int mSongId = NO_SONG_PROVIDED;
+
+    private static final int NO_SONG_PROVIDED = -1;
+
     public int getImageResourceId() {
         return mImageResourceID;
     }
@@ -31,6 +36,26 @@ public class Word {
     // return whether image is provided
     public boolean hasImage() {
         return mImageResourceID != NO_IMAGE_PROVIDED;
+    }
+
+    // set Song Id
+    public void setSongId(int songId) {
+        mSongId = songId;
+    }
+
+    // get Song Id
+    public int getSongId() {
+        return mSongId;
+    }
+
+    // has Song
+    public boolean hasSong(){return mSongId != NO_SONG_PROVIDED;}
+
+    public Word(int songId, int src, String english, String miwok) {
+        mSongId = songId;
+        mImageResourceID = src;
+        mEnglishWord = english;
+        mMiwokWord = miwok;
     }
 
     public Word(int src, String english, String miwok) {
