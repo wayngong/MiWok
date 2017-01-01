@@ -4,38 +4,34 @@
     android:id="@+id/list_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_vertical_margin">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/miwok_item_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/activity_height_list"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/miwok_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_vertical_margin" />
+            style="@style/CategoryImageStyle"/>
 
         <LinearLayout
-            android:id="@+id/miwok_text_views"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/miwok_text_view_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/miwok_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="lutti" />
+                style="@style/CategoryTextMiwokStyle"/>
 
             <TextView
                 android:id="@+id/default_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="one" />
+                style="@style/CategoryTextEnglishStyle"/>
         </LinearLayout>
 
     </LinearLayout>

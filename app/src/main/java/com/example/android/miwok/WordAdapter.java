@@ -1,12 +1,15 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
+import android.media.Image;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -18,7 +21,14 @@ import java.util.ArrayList;
  */
 
 public class WordAdapter extends ArrayAdapter<Word> {
-    public WordAdapter(Activity context, ArrayList<Word> words){
+    private int mColorCategory = R.color.tan_background;
+
+    public WordAdapter(Activity context, ArrayList<Word> words, int colorCategory) {
+        super(context, 0, words);
+        mColorCategory = colorCategory;
+    }
+
+    public WordAdapter(Activity context, ArrayList<Word> words) {
         super(context, 0, words);
     }
 
@@ -26,15 +36,23 @@ public class WordAdapter extends ArrayAdapter<Word> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
-        if(listItemView == null){
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
 
         Word currentWord = getItem(position);
 
+        LinearLayout linearLayout = (LinearLayout) listItemView.findViewById(R.id.miwok_text_view_list);
+        linearLayout.setBackgroundResource(mColorCategory);
+
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.miwok_image_view);
-        imageView.setImageResource(currentWord.getSrcImage());
+        if (currentWord.hasImage()) {
+            imageView.setVisibility(ImageView.VISIBLE);
+            imageView.setImageResource(currentWord.getImageResourceId());
+        } else {
+            imageView.setVisibility(ImageView.GONE);
+        }
 
         TextView englistView = (TextView) listItemView.findViewById(R.id.default_text_view);
         englistView.setText(currentWord.getEnglish());

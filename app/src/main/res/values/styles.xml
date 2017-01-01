@@ -30,4 +30,46 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <!--Style for category words-->
+    <style name="CategoryTextStyle">
+        <item name="android:paddingLeft">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingRight">@dimen/activity_vertical_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_category_numbers</item>
+    </style>
+
+    <!--Style for category image-->
+    <style name="CategoryImageStyle">
+        <item name="android:layout_width">@dimen/activity_width_list</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <!--Style for category text lists LinearLayout-->
+    <style name="CategoryTextListStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <!--Style for category text miwok-->
+    <style name="CategoryTextMiwokStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <!--Style for category English translation-->
+    <style name="CategoryTextEnglishStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 </resources>
