@@ -1,18 +1,33 @@
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.provider.MediaStore;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
+import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 
 
 public class NumbersActivity extends AppCompatActivity {
 
-    private MediaPlayer mMediaPlayer;
+    private MediaPlayer mMediaPlayer = null;
+
+    private AudioManager mAudioManager = null;
+
+    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener;
 
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -22,13 +37,23 @@ public class NumbersActivity extends AppCompatActivity {
     };
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
         final ArrayList<Word> words = new ArrayList<Word>();
 
-        words.add(new Word(R.raw.number_one, R.drawable.number_one, "one", "lutti"));
+        words.add(new Word(R.raw.test, R.drawable.number_one, "one", "lutti"));
         words.add(new Word(R.raw.number_two, R.drawable.number_two, "two", "otiiko"));
         words.add(new Word(R.raw.number_three, R.drawable.number_three, "Three", "tolookosu"));
         words.add(new Word(R.raw.number_four, R.drawable.number_four, "Four", "oyyisa"));
@@ -47,13 +72,67 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("ItemClick", "Play Media");
                 releaseMediaPlayer();
                 Word word = words.get(position);
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getImageResourceId());
-                mMediaPlayer.start();
-                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                        AudioManager.STREAM_MUSIC,
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    // get Audio Focus Now
+//            mAudioManager.registerMediaButtonEventReceiver(RemoteControlReceiver);
+
+                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getSongId());
+
+                    mMediaPlayer.start();
+
+                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                } else {
+                    // get Audio Focus Failed
+                }
+
             }
         });
+
+        AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener =
+                new AudioManager.OnAudioFocusChangeListener() {
+                    @Override
+                    public void onAudioFocusChange(int focusChange) {
+                        if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                            Log.i("AudioFocusChange", "GAIN");
+                            if (mMediaPlayer != null) {
+                                mMediaPlayer.start();
+                            }
+                        } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                            Log.i("AudioFocusChange", "LOSS");
+                            if (mMediaPlayer != null) {
+                                mMediaPlayer.stop();
+                                releaseMediaPlayer();
+                            }
+                        } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                                focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                            Log.i("AudioFocusChange", "LOSS TRANSIENT");
+                            if (mMediaPlayer != null) {
+                                mMediaPlayer.pause();
+                                mMediaPlayer.seekTo(0);
+                            }
+                        }
+                    }
+                };
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -73,7 +152,7 @@ public class NumbersActivity extends AppCompatActivity {
 
             // Regardless of whether or not we were granted audio focus, abandon it. This also
             // unregisters the AudioFocusChangeListener so we don't get anymore callbacks.
-//            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
 }
