@@ -10,11 +10,15 @@ public class Word {
 
     private static final int NO_IMAGE_PROVIDED = -1;
 
+    private static final int No_ID_PROVIDED = -1;
+
     // English name for miwok
-    private String mEnglishWord;
+    private String mEnglishWord = "English Work";
+    private int mEnglishID = No_ID_PROVIDED;
 
     // Miwok name for miwok
-    private String mMiwokWord;
+    private String mMiwokWord = "Miwok Word";
+    private int mMiwokID = No_ID_PROVIDED;
 
     // Song id
     private int mSongId = NO_SONG_PROVIDED;
@@ -29,9 +33,17 @@ public class Word {
         return mEnglishWord;
     }
 
+    public int getEnglishId(){return mEnglishID;}
+
+    public boolean hasEnglishId() { return mEnglishID != No_ID_PROVIDED;}
+
     public String getMiwok() {
         return mMiwokWord;
     }
+
+    public int getMiwokId() {return mMiwokID;}
+
+    public boolean hasMiwokId(){ return mMiwokID != No_ID_PROVIDED;}
 
     // return whether image is provided
     public boolean hasImage() {
@@ -48,14 +60,23 @@ public class Word {
         return mSongId;
     }
 
+    public int getAudioResourceId(){ return mSongId;}
+
     // has Song
     public boolean hasSong(){return mSongId != NO_SONG_PROVIDED;}
 
-    public Word(int songId, int src, String english, String miwok) {
+//    public Word(int songId, int src, String english, String miwok) {
+//        mSongId = songId;
+//        mImageResourceID = src;
+//        mEnglishWord = english;
+//        mMiwokWord = miwok;
+//    }
+
+    public Word(int englishId, int miwokId, int iconSrc, int songId){
         mSongId = songId;
-        mImageResourceID = src;
-        mEnglishWord = english;
-        mMiwokWord = miwok;
+        mImageResourceID = iconSrc;
+        mEnglishID = englishId;
+        mMiwokID = miwokId;
     }
 
     public Word(int src, String english, String miwok) {
