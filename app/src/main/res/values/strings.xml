@@ -27,4 +27,74 @@
 
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
     <string name="category_family">Family Members</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--English Translation for number one-->
+    <string name="number_one">One</string>
+
+    <!--Miwok Translaiton for number one-->
+    <string name="miwok_number_one">lutti</string>
+
+    <!--English Translation for number two-->
+    <string name="number_two">Two</string>
+
+    <!--Miwok Translation for number two-->
+    <string name="miwok_number_two">otiiko</string>
+
+    <!--English Translation for number three-->
+    <string name="number_three">Three</string>
+
+    <!--Miwok Translation for number three-->
+    <string name="miwok_number_three">tolookosu</string>
+
+    <!--English Translation for number four-->
+    <string name="number_four">Four</string>
+
+    <!--Miwok Translation for number four-->
+    <string name="miwok_number_four">oyyisa</string>
+
+    <!--English Translation for number five-->
+    <string name="number_five">Five</string>
+
+    <!--Miwok Translation for number five-->
+    <string name="miwok_number_five">massokka</string>
+
+    <!--English Translation for number six-->
+    <string name="number_six">Six</string>
+
+    <!--Miwok Translation for number six-->
+    <string name="miwok_number_six">temmokka</string>
+
+    <!--English Translation for number seven-->
+    <string name="number_seven">Seven</string>
+
+    <!--Miwok Translation for number seven-->
+    <string name="miwok_number_seven">kenekaku</string>
+
+    <!--English Translation for number eight-->
+    <string name="number_eight">Eight</string>
+
+    <!--Miwok Translation for number eight-->
+    <string name="miwok_number_eight">kawinta</string>
+
+    <!--English Translation for number nine-->
+    <string name="number_nine">Nine</string>
+
+    <!--Miwok Translation for number Nine-->
+    <string name="miwok_number_nine">wo’e</string>
+
+    <!--English Translation for number ten-->
+    <string name="number_ten">Ten</string>
+
+    <!--Miwok Translation for number ten-->
+    <string name="miwok_number_ten">na’aacha</string>
+
+    <!--English Translation for Red-->
+    <string name="english_red">red</string>
+
+    <!--Miwok Translation for Red-->
+    <string name="miwok_red">weṭeṭṭi</string>
+
 </resources>

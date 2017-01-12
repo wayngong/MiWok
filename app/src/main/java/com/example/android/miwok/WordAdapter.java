@@ -29,9 +29,9 @@ public class WordAdapter extends ArrayAdapter<Word> {
         mColorCategory = colorCategory;
     }
 
-    public WordAdapter(Activity context, ArrayList<Word> words) {
-        super(context, 0, words);
-    }
+//    public WordAdapter(Activity context, ArrayList<Word> words) {
+//        super(context, 0, words);
+//    }
 
     @NonNull
     @Override
@@ -56,10 +56,16 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }
 
         TextView englistView = (TextView) listItemView.findViewById(R.id.default_text_view);
-        englistView.setText(currentWord.getEnglish());
+        if(currentWord.hasEnglishId())
+            englistView.setText(currentWord.getEnglishId());
+        else
+            englistView.setText(currentWord.getEnglish());
 
         TextView miwokView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
-        miwokView.setText(currentWord.getMiwok());
+        if(currentWord.hasMiwokId())
+            miwokView.setText(currentWord.getMiwokId());
+        else
+            miwokView.setText(currentWord.getMiwok());
 
 //        if (currentWord.hasSong()) {
 //            final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongId());
